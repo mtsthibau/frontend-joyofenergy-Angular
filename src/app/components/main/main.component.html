@@ -1,7 +1,9 @@
 <div class="background shadow-2 flex overflow-hidden">
     <app-side-bar></app-side-bar>
     <div class="bg-very-light-grey p3 flex-auto overflow-auto">
+
         <h1 class="regular darkgray line-height-1 mb3">Energy consumption</h1>
+
         <section class="mb3">
             <button
               class="
@@ -22,8 +24,9 @@
               Last 30 days
             </button>
           </section>
+
           <section class="chartHeight mb3">
-            <app-chart [chartData]="chartData"></app-chart>
+            <app-chart [chartId]="'chart'" [chartData]="chartData"></app-chart>
           </section>
     </div>
 </div>
