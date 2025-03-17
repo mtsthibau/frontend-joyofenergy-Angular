@@ -9,7 +9,7 @@ import { Chart, registerables} from 'chart.js';
 })
 export class ChartComponent implements OnInit, OnChanges {
 
-  chart: any;
+  chart: Chart;
 
   @Input() chartData: Data[];
   @Input() chartId: string;
