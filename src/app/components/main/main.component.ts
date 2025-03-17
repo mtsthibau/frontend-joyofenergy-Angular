@@ -14,13 +14,14 @@ export class MainComponent implements OnInit {
   chartData: Data[] = []
 
   constructor() {
-    this.createChart();
+    this.prepateEnergyConsumptionChartData();
   }
 
   ngOnInit(): void {
+    
   }
 
-  async createChart() {
+  async prepateEnergyConsumptionChartData() {
     this.chartData = await getReadings();
     this.chartData = groupByDay(this.chartData)
     this.chartData = sortByTime(this.chartData).slice(-30)
