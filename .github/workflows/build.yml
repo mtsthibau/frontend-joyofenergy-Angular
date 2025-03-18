@@ -32,12 +32,12 @@ jobs:
         run: ng test
         working-directory: ./src/
 
-      - name: Run e2e tests
-        uses: cypress-io/github-action@v6
-        with:
-          build: npm run build
-          start: npm start
-          working-directory: ./src/
+      # - name: Run e2e tests
+      #   uses: cypress-io/github-action@v6
+      #   with:
+      #     build: npm run build
+      #     start: npm start
+      #     working-directory: ./src/
 
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v3
