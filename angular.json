@@ -30,7 +30,7 @@
             "styles": [
               "src/styles.scss",
               "src/index.scss",
-              "src/basscss.scss"       
+              "src/basscss.scss"
             ],
             "scripts": []
           },
@@ -97,15 +97,53 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [ 
+            "styles": [
               "src/styles.scss",
               "src/index.scss",
               "src/basscss.scss"
             ],
             "scripts": []
           }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "angular-frontend-developer-joyofenergy:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "angular-frontend-developer-joyofenergy:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "angular-frontend-developer-joyofenergy:serve:production"
+            }
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "angular-frontend-developer-joyofenergy:serve:production"
+            }
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
