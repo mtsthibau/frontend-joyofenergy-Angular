@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Data } from 'src/app/shared/models/dataModel';
-import { groupByDay, sortByTime } from "../../shared/utils/reading";
+import { groupByDay, sortByTime } from "../../shared/utils/utils";
 import { ApiService } from '../../shared/services/api.service';
 
 

@@ -1,4 +1,4 @@
-import { groupByDay, sortByTime } from "./reading";
+import { groupByDay, sortByTime } from "./utils";
 
 describe("#reading", function () {
   describe("#groupedByDay", () => {
