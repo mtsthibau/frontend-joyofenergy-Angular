@@ -1,0 +1,36 @@
+name: Build and publish
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    # permissions:
+      # contents: read
+    runs-on: self-hosted
+    # runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Setup node/npm
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run:  npm install
+
+      - name: Build project
+        run: ng build
+
+      - name: Run unit tests via Karma
+        run: ng test
+
+      - name: Run e2e tests
+        run: ng e2e
+      
+        working-directory: ./script/validate-data
+
