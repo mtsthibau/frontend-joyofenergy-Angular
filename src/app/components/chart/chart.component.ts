@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Inject, OnChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, ViewChild, ElementRef } from '@angular/core';
 import { Data } from 'src/app/shared/models/dataModel';
 import { Chart, registerables} from 'chart.js';
 
@@ -13,10 +13,14 @@ export class ChartComponent implements OnInit, OnChanges {
 
   @Input() chartData: Data[];
   @Input() chartId: string;
+  @Input() chartType: any;
+  
+  @ViewChild('chartElement') chartElement: ElementRef<HTMLElement>;
 
   constructor() {
     this.chartData = []
     this.chartId = ''
+    this.chartType = ''
 
     //tree-shakeable if needed
     Chart.register(...registerables);
@@ -25,6 +29,7 @@ export class ChartComponent implements OnInit, OnChanges {
   ngOnChanges(change) {
     if (change && change.chartData && change.chartData.currentValue != change.chartData.previousValue) {
       this.chartData = change.chartData.currentValue
+
       this.renderChart(this.chartId, this.chartData)
     }
   }
@@ -78,9 +83,11 @@ export class ChartComponent implements OnInit, OnChanges {
     if (this.chart) {
       this.chart.destroy();
     }
+    
+    this.chartType
 
     this.chart = new Chart(containerId, {
-      type: "bar",
+      type: this.chartType,
       data: data,
       options: {
         scales: {
