@@ -33,7 +33,9 @@ jobs:
         working-directory: ./src/
 
       - name: Run e2e tests
-        run: ng e2e
-        working-directory: ./src/
-      
+        uses: cypress-io/github-action@v6
+        with:
+          build: npm run build
+          start: npm start
+          working-directory: ./src/
 
