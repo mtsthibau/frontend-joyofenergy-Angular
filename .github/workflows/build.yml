@@ -39,11 +39,16 @@ jobs:
       #     start: npm start
       #     working-directory: ./src/
 
-      - name: Setup Docker Buildx
-        uses: docker/setup-buildx-action@v3
+      # - name: Setup Docker Buildx
+      #   uses: docker/setup-buildx-action@v3
 
-      - name: Build and push
-        uses: docker/build-push-action@v6
+      # - name: Build and push
+      #   uses: docker/build-push-action@v6
+      #   with:
+      #     push: true
+      #     tags: joyofenergy:latest
+
+      - uses: actions/upload-artifact@v4
         with:
-          push: true
-          tags: joyofenergy:latest
+          name: joyofenergy-artifact
+          path: ./dist/angular-front-end-developer-joyofenergy
