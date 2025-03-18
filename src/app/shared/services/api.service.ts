@@ -17,5 +17,21 @@ export class ApiService {
       value: Math.random() * 0.7 + 0.4,
     }));
   };
+
+  getRealTimeReadings = async () => {
+    const current = 0
+    return [{
+      time: current,
+      value: Math.random() * 0.7 + 0.4
+    }]
+  };
+
+  addReading = async (readings) => {
+    const current = readings[readings.length - 1].time + 1
+    return {
+      time: current,
+      value: Math.random() * 0.7 + 0.4
+    }
+  }
 }
 

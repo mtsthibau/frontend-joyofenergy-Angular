@@ -25,6 +25,11 @@
       <section class="chartHeight mb3">
         <app-chart [chartId]="'chart'" [chartData]="chartData" [chartType]="'bar'"></app-chart>
       </section>
+
+      <h1 class="regular darkgray line-height-1 mb3">Real Time Energy consumption (kWh)</h1>
+      <section class="chartHeight mb3">
+        <app-chart [chartId]="'chartLine'" [chartData]="chartRealTimeData" [chartType]="'line'"></app-chart>
+      </section>
     </div>
   </div>
 </div>

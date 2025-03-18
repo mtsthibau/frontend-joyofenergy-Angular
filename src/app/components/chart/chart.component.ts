@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, OnChanges, ViewChild, ElementRef } from '@angular/core';
 import { Data } from 'src/app/shared/models/dataModel';
-import { Chart, registerables} from 'chart.js';
+import { Chart, registerables } from 'chart.js';
 
 @Component({
   selector: 'app-chart',
@@ -14,7 +14,7 @@ export class ChartComponent implements OnInit, OnChanges {
   @Input() chartData: Data[];
   @Input() chartId: string;
   @Input() chartType: any;
-  
+
   @ViewChild('chartElement') chartElement: ElementRef<HTMLElement>;
 
   constructor() {
@@ -51,7 +51,7 @@ export class ChartComponent implements OnInit, OnChanges {
 
   renderChart = (containerId, readings) => {
 
-    if(readings.length == 0) 
+    if (readings.length == 0)
       return
 
     Chart.defaults.font.size = 10;
@@ -61,7 +61,19 @@ export class ChartComponent implements OnInit, OnChanges {
       Object.values(Chart).filter((chartClass) => chartClass.id)
     );
 
-    const labels = readings.map(({ time }) => this.formatDateLabel(time));
+    let labels
+    let backgroundColor
+
+    if (this.chartType == "line"){
+      labels = readings.map(({ time }) => time.toString());
+      backgroundColor = 'transparent'
+    }
+
+    if (this.chartType == "bar"){
+      labels = readings.map(({ time }) => this.formatDateLabel(time));
+      backgroundColor = '#5A8EDA'
+    }
+
     const values = readings.map(({ value }) => value);
 
     const data = {
@@ -71,10 +83,10 @@ export class ChartComponent implements OnInit, OnChanges {
           label: "kWh usage",
           data: values,
           fill: true,
-          borderColor: "rgb(75, 192, 192)",
+          borderColor: "#5A8EDA",
           tension: 0.1,
-          borderWidth: 0.2,
-          backgroundColor: "#5A8EDA",
+          borderWidth: 1,
+          backgroundColor: backgroundColor,
           borderRadius: 10,
         },
       ],
@@ -83,7 +95,7 @@ export class ChartComponent implements OnInit, OnChanges {
     if (this.chart) {
       this.chart.destroy();
     }
-    
+
     this.chartType
 
     this.chart = new Chart(containerId, {
