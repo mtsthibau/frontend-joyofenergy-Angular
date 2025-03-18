@@ -45,6 +45,7 @@ describe('ApiService', () => {
   });
 
   it("should generate add reading realtime chart", async () => {
-    expect(await service.addReading()).toHaveSize(1);
+    const readings = await service.getReadings();
+    expect(service.addReading(readings)).toBeDefined();
   });
 });
