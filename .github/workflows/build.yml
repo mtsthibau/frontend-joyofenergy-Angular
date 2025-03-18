@@ -51,4 +51,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: joyofenergy-artifact
-          path: ./dist/angular-front-end-developer-joyofenergy
+          path: ./dist/angular-frontend-developer-joyofenergy/
