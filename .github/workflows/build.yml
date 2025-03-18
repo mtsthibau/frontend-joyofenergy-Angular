@@ -25,12 +25,15 @@ jobs:
 
       - name: Build project
         run: ng build
+        working-directory: ./src/
+
 
       - name: Run unit tests via Karma
         run: ng test
+        working-directory: ./src/
 
       - name: Run e2e tests
         run: ng e2e
+        working-directory: ./src/
       
-        working-directory: ./script/validate-data
 
