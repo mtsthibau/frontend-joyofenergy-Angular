@@ -39,4 +39,12 @@ describe('ApiService', () => {
     expect(readings[1].time - readings[2].time).toBe(OneHourInMilliseconds);
     expect(readings[2].time - readings[3].time).toBe(OneHourInMilliseconds);
   });
+
+  it("should generate start reading realtime chart", async () => {
+    expect(await service.getRealTimeReadings()).toHaveSize(1);
+  });
+
+  it("should generate add reading realtime chart", async () => {
+    expect(await service.addReading()).toHaveSize(1);
+  });
 });

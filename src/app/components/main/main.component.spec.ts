@@ -20,4 +20,12 @@ describe('MainComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create a new chart', () => {
+    expect(component.prepateEnergyConsumptionChartData).toBeTruthy();
+  });
+
+  it('should create a new real timechart', () => {
+    expect(component.prepateRealTimeEnergyConsumptionChartData).toBeTruthy();
+  });
 });
