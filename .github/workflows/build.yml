@@ -46,4 +46,4 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tages: joyofenergy:latest
+          tags: joyofenergy:latest
