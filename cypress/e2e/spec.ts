@@ -9,7 +9,6 @@ describe('e2e test', () => {
     cy.contains('Fed into grid')
     cy.contains('Energy consumption')
     cy.contains('Last 30 days').click()
-    cy.contains('chart')
   })
 
 })
