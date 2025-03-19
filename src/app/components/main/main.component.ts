@@ -34,10 +34,8 @@ export class MainComponent implements OnInit {
   }
 
   async prepateRealTimeEnergyConsumptionChartData() {
-    //Start with the first reading
     this.chartRealTimeData = await this.apiService.getRealTimeReadings();
    
-     //Pool to add new readings every 1 seconds
      this.pool = interval(1000).subscribe((val) => {
       this.apiService.addReading(this.chartRealTimeData).then((reading) => {
         this.chartRealTimeData = [...this.chartRealTimeData, reading].slice(-30)
