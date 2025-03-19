@@ -1,27 +1,55 @@
 <div class="p3 menuWidth overflow-auto">
-  <div
-    class="energy-card"
-    *ngFor="let energyField of energyConsumptionMap | keyvalue: asIsOrder"
-  >
-    <div class="h2 greyBlue">
-      {{ energyField.key }}
+
+  <div class="clearfix col-12 flex flex-row">
+
+    <div class="col-2 xs-hide sm-hide flex flex-column">
+      <div class="energy-card" *ngFor="let energyField of energyConsumptionMap | keyvalue: asIsOrder">
+        <div class="h2 greyBlue bold">
+          {{ energyField.key }}
+        </div>
+        <div class="darkgray mb2 h2">
+          {{ energyField.value }}
+        </div>
+      </div>
     </div>
-    <div class="darkgray mb2">
-      {{ energyField.value }}
+
+    <div class="col-6 sm-flex flex flex-column md-hide lg-hide">
+      <div class="energy-card" *ngFor="let energyField of energyConsumptionMap | keyvalue: asIsOrder">
+        <div class="h4 greyBlue bold">
+          {{ energyField.key }}
+        </div>
+        <div class="darkgray mb2 h4">
+          {{ energyField.value }}
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-10 col-sm-12 flex flex-column sm-flex ml3 xs-hide sm-hide">
+      <h2 class="h2 mb1 darkgray ml2">Your devices:</h2>
+      <hr />
+      <section class="h5 darkgray mb2 flex flex-row flex ml1 mt2">  
+        <div class="shadow-2 roundedMore bg-super-light-grey mb1 ml1 col-7" *ngFor="let device of devicesMap | keyvalue">
+          <p class="h3 darkgray p1">{{ device.key }}</p>
+          <p class="h3 darkgray bold p1 bg-very-light-grey">
+            {{ device.value }}
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <div class="col-10 col-sm-12 sm-flex ml3 md-hide lg-hide">
+      <h2 class="h3 mb1 darkgray ml2">Your devices:</h2>
+      <hr />
+      <section class="h5 darkgray mb2 flex flex-row ml1 mt2">  
+        <div class="shadow-2 roundedMore bg-super-light-grey mb1 ml1 col-7" *ngFor="let device of devicesMap | keyvalue">
+          <p class="h4 darkgray p1">{{ device.key }}</p>
+          <p class="h4 darkgray bold p3 bg-very-light-grey">
+            {{ device.value }}
+          </p>
+        </div>
+      </section>
     </div>
   </div>
-  <section class="h5 darkgray mb2">
+ 
 
-
-  <h4 class="h4 mb1">Your devices:</h4>
-  <div
-    class="shadow-2 roundedMore bg-super-light-grey mb1"
-    *ngFor="let device of devicesMap | keyvalue"
-  >
-    <p class="darkgray pl2 pt1 pb1">{{ device.key }}</p>
-    <p class="h5 darkgray bold pl2 pb1 pt1 bg-very-light-grey">
-      {{ device.value }}
-    </p>
-  </div>
-</section>
 </div>

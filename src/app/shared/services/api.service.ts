@@ -1,15 +1,37 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
-import { Observable } from 'rxjs/internal/Observable';
-import { Data } from '../models/dataModel';
-import { getReadings } from "../utils/reading";
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ApiService {
 
-  constructor() { }
+  constructor() { 
+  }
+  
+  getReadings = async (length = 1200) => {
+    const current = Date.now();
+    const hour = 1000 * 60 * 60;
+    return [...new Array(length)].map((_, index) => ({
+      time: current - index * hour,
+      value: Math.random() * 0.7 + 0.4,
+    }));
+  };
 
+  getRealTimeReadings = async () => {
+    const current = 0
+    return [{
+      time: current,
+      value: Math.random() * 0.7 + 0.4
+    }]
+  };
+
+  addReading = async (readings) => {
+    const current = readings[readings.length - 1].time + 1
+    return {
+      time: current,
+      value: Math.random() * 0.7 + 0.4
+    }
+  }
 }
 
